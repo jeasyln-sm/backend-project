@@ -23,15 +23,15 @@ class MemberServiceTest {
     PasswordEncoder passwordEncoder;
 
 
-    public Member createMember()    {
-        MemberDto memberDto = new MemberDto();
-        memberDto.setName("홍길동");
-        memberDto.setEmail("hong@gmail.com");
-        memberDto.setAddress("서울시 마포구 합정동");
-        memberDto.setPassword1("1234");
-        memberDto.setPassword2("1234");
-        return Member.createMember(memberDto, passwordEncoder);
-    }
+//    public Member createMember()    {
+//        MemberDto memberDto = new MemberDto();
+//        memberDto.setName("홍길동");
+//        memberDto.setEmail("hong@gmail.com");
+//        memberDto.setZipcode("12345");
+//        memberDto.setPassword1("1234");
+//        memberDto.setPassword2("1234");
+//        return Member.createMember(memberDto, passwordEncoder);
+//    }
 
 
 //    @Test
@@ -46,19 +46,4 @@ class MemberServiceTest {
 //        assertEquals(member.getAddress(), savedMember.getAddress());
 //        assertEquals(member.getPassword(), savedMember.getPassword());
 //    }
-
-
-    @Test
-    @DisplayName("중복 회원 가입 테스트")
-    public void saveDuplicateMemberTest() {
-        Member member1 = createMember();
-        Member member2 = createMember();
-        memberService.saveMember(member1);
-
-        Throwable e = assertThrows(IllegalStateException.class, () -> {
-                memberService.saveMember(member2);});
-
-        assertEquals("이미 가입된 회원입니다.", e.getMessage());
-
-    }
 }

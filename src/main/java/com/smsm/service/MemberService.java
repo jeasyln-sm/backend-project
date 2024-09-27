@@ -44,8 +44,4 @@ public class MemberService implements UserDetailsService {
                 .roles(member.getRole().toString())
                 .build();
     }
-
-
-    // 회원 로그인
-
 }
